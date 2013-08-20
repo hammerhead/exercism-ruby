@@ -10,10 +10,8 @@ class Phrase
 
     words = phrase.split /\s|:|,/
     groups = words.group_by { |word| normalize_word(word) }
-    groups.each do |word, occurences|
-      next if word.empty?
-
-      words_count[word] = occurences.size
+    groups.map do |word, occurences|
+      words_count[word] = occurences.size unless word.empty?
     end
 
     words_count
