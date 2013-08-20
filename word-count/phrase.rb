@@ -9,12 +9,11 @@ class Phrase
     words_count = {}
 
     words = phrase.split /\s|:|,/
-    words.each do |word|
-      normalized_word = normalize_word word
-      next if normalized_word.empty?
+    groups = words.group_by { |word| normalize_word(word) }
+    groups.each do |word, occurences|
+      next if word.empty?
 
-      words_count[normalized_word] ||= 0
-      words_count[normalized_word] += 1
+      words_count[word] = occurences.size
     end
 
     words_count
