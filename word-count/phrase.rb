@@ -8,7 +8,7 @@ class Phrase
   def word_count
     words_count = {}
 
-    words = phrase.split /\s|:|,/
+    words = phrase.scan(/(\w*)/).flatten
     groups = words.group_by { |word| normalize_word(word) }
     groups.map do |word, occurences|
       words_count[word] = occurences.size unless word.empty?
@@ -20,8 +20,6 @@ class Phrase
   private
 
   def normalize_word(word)
-    cleaned_word = word.match(/(\w*)/).captures.first
-
-    cleaned_word.strip.downcase
+    word.strip.downcase
   end
 end
