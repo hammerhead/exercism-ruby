@@ -6,20 +6,18 @@ class Phrase
   end
 
   def word_count
-    words_count = {}
-
-    words = phrase.scan(/(\w*)/).flatten
-    groups = words.group_by { |word| normalize_word(word) }
-    groups.map do |word, occurences|
-      words_count[word] = occurences.size unless word.empty?
+    phrase_words.each_with_object(Hash.new(0)) do |word, words|
+      words[word] += 1
     end
-
-    words_count
   end
 
   private
 
+  def phrase_words
+    phrase.scan(/(\w+)/).map { |word| normalize_word(word.first) }
+  end
+
   def normalize_word(word)
-    word.strip.downcase
+    word.downcase
   end
 end
