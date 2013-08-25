@@ -18,7 +18,7 @@ class Anagram
   end
 
   def permutations
-    word.chars.permutation.collect { |p| p.join '' } 
+    @permutations ||= word.chars.permutation.collect { |p| p.join '' }
   end
 
   def anagram?(candidate)
