@@ -7,7 +7,7 @@ class Anagram
 
   def match(candidates)
     candidates.select do |c|
-      anagram? normalize(c) and normalize(c) != word
+      anagram?(normalize(c)) and normalize(c) != word
     end
   end
 
