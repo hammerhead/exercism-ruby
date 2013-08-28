@@ -11,7 +11,8 @@ class DNA
 
   def hamming_distance(dna_compare)
     distance = 0
-    dna_compare[0..min_index(dna_compare)].chars.each_with_index do |char, index|
+    characters = dna_compare[0..min_index(dna_compare)].chars
+    characters.each_with_index do |char, index|
       distance += 1 if char != dna[index]
     end
 
