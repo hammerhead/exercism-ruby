@@ -5,16 +5,13 @@ class DNA
     @dna = dna
   end
 
-  def min_length(dna_compare)
-    [dna_compare.length, dna.length].min
+  def min_index(dna_compare)
+    [dna_compare.length, dna.length].min - 1
   end
 
   def hamming_distance(dna_compare)
     distance = 0
-
-    dna_compare.chars.each_with_index do |char, index|
-      break if index >= min_length(dna_compare)
-
+    dna_compare[0..min_index(dna_compare)].chars.each_with_index do |char, index|
       distance += 1 if char != dna[index]
     end
 
