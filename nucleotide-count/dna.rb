@@ -20,7 +20,7 @@ class DNA
 
   def count(nucleotide)
     raise ArgumentError.new 'Invalid nucleotide' unless is_valid? nucleotide
-    dna.chars.count nucleotide
+    dna.count nucleotide
   end
 
   def nucleotide_counts
