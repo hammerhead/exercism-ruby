@@ -2,8 +2,6 @@ class DNA
   attr_reader :dna
 
   DNA_NUCLEOTIDES = ['A', 'C', 'G', 'T']
-  RNA_NUCLEOTIDES = ['A', 'C', 'G', 'U']
-
   URACIL = 'U'
 
   def initialize(dna)
@@ -11,7 +9,7 @@ class DNA
   end
 
   def nucleotides
-    DNA_NUCLEOTIDES + RNA_NUCLEOTIDES
+    DNA_NUCLEOTIDES + [URACIL]
   end
 
   def is_valid?(nucleotide)
@@ -24,7 +22,7 @@ class DNA
   end
 
   def nucleotide_counts
-    (nucleotides - [URACIL]).each_with_object(Hash.new(0)).each do |nucleotide, count|
+    DNA_NUCLEOTIDES.each_with_object({}).each do |nucleotide, count|
       count[nucleotide] = count nucleotide
     end
   end
